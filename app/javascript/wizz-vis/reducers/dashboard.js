@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 import * as actionTypes from '../constants/commonConstants';
 
 const initialState = {

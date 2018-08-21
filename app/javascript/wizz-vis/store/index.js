@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 import middleware from 'redux-thunk';
 

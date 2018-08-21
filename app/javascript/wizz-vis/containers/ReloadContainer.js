@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';

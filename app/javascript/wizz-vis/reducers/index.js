@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 import dashboardReducer from './dashboard';
 
 // This is how you do a directory of reducers.

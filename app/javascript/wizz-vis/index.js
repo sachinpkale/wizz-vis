@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 import ReactOnRails from 'react-on-rails';
 
 import DashboardApp from './startup/DashboardApp';
