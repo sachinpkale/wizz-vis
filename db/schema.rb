@@ -21,15 +21,16 @@ ActiveRecord::Schema.define(version: 2018_06_12_143839) do
     t.bigint "datasource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lowerLimit", default: 0
     t.index ["datasource_id"], name: "index_aggregators_on_datasource_id"
   end
 
   create_table "aggregators_widgets", force: :cascade do |t|
     t.bigint "aggregator_id", null: false
     t.bigint "widget_id", null: false
+    t.string "aggregator_name"
     t.index ["aggregator_id", "widget_id"], name: "index_aggregators_widgets_on_aggregator_id_and_widget_id"
     t.index ["widget_id", "aggregator_id"], name: "index_aggregators_widgets_on_widget_id_and_aggregator_id"
-    t.string "aggregator_name"
   end
 
   create_table "dashboards", force: :cascade do |t|

@@ -1,4 +1,6 @@
 class DashboardsController < ApplicationController
+  include ReactOnRails::Controller
+
   before_action :set_dashboard, only: [:show, :edit, :update, :destroy, :update_layout]
   skip_before_action :verify_authenticity_token, only: :update_layout
 
@@ -11,6 +13,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1
   # GET /dashboards/1.json
   def show
+    redux_store("SharedReduxStore", props: @app_props_server_render)
   end
 
   # GET /dashboards/new

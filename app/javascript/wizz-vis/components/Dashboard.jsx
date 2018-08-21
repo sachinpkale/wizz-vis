@@ -74,6 +74,17 @@ export default class Dashboard extends React.Component {
     this.setState({ reloadTimestamp: Date.now() });
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.reloadTimestamp !== prevState.reloadTimestamp) {
+      return {
+        reloadTimestamp: nextProps.reloadTimestamp
+      };
+    }
+
+    // No state update necessary
+    return null;
+  }
+
   removeItem (widget_id) {
     this.setState({
       $$widgets: reject(this.state.$$widgets, { id: widget_id }),
