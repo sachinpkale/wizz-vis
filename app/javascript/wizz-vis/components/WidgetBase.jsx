@@ -189,7 +189,7 @@ WidgetBase.propTypes = {
   title: PropTypes.string,
   options: PropTypes.object,
   locked: PropTypes.bool.isRequired,
-  reloadTimestamp: PropTypes.number,
+  reloadTimestamp: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   remove: PropTypes.func,
   type: PropTypes.oneOf(Object.keys(components))
 };
