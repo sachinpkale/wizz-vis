@@ -13,7 +13,7 @@ import DashboardContainer from '../containers/DashboardContainer';
 *  This is used for the client rendering hook after the page html is rendered.
 *  React will see that the state is the same and not do anything.
 */
-export default (props, reloadTimestamp, domNodeId) => {
+export default (props, railsContext, domNodeId) => {
  // This is where we get the existing store.
  const store = ReactOnRails.getStore('SharedReduxStore');
 

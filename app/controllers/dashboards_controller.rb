@@ -2,6 +2,7 @@ class DashboardsController < ApplicationController
   include ReactOnRails::Controller
 
   before_action :set_dashboard, only: [:show, :edit, :update, :destroy, :update_layout]
+  before_action :initialize_shared_store, only: :show
   skip_before_action :verify_authenticity_token, only: :update_layout
 
   # GET /dashboards
@@ -13,7 +14,6 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1
   # GET /dashboards/1.json
   def show
-    redux_store("SharedReduxStore", props: {reloadTimestamp: nil})
   end
 
   # GET /dashboards/new
@@ -79,6 +79,13 @@ class DashboardsController < ApplicationController
   end
 
   private
+    def initialize_shared_store
+      redux_store(
+        'SharedReduxStore',
+        props: { reloadTimestamp: nil }
+      )
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_dashboard
       @dashboard = Dashboard.find(params[:id])
