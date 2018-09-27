@@ -9,8 +9,8 @@ import reducers from '../reducers/index';
  *  Export a function that takes the props and returns a Redux store
  *  This is used so that 2 components can have the same store.
  */
-export default (props, reloadTimestamp) => {
+export default (props) => {
   const combinedReducer = combineReducers(reducers);
-  const newProps = { ...props, reloadTimestamp };
+  const newProps = { ...props };
   return applyMiddleware(middleware)(createStore)(combinedReducer, newProps);
 };

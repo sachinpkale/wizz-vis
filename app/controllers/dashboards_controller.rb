@@ -13,7 +13,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1
   # GET /dashboards/1.json
   def show
-    redux_store("SharedReduxStore", props: @app_props_server_render)
+    redux_store("SharedReduxStore", props: {reloadTimestamp: nil})
   end
 
   # GET /dashboards/new

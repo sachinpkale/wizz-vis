@@ -9,12 +9,13 @@ import Reload from '../components/Reload';
 
 import * as actions from '../actions/index';
 
-const ReloadContainer = ({ actions, reloadTimestamp }) => (
-  <Reload {...{ actions, reloadTimestamp }} />
+const ReloadContainer = ({ actions }) => (
+  <Reload {...{ actions }} />
 );
+
 ReloadContainer.propTypes = {
   actions: PropTypes.object.isRequired,
-  reloadTimestamp: PropTypes.object.isRequired
+  reloadTimestamp: PropTypes.number
 };
 
 function mapStateToProps(state) {

@@ -9,12 +9,13 @@ import Dashboard from '../components/Dashboard';
 
 import * as actions from '../actions/index';
 
-const DashboardContainer = ({actions, reloadTimestamp, ...props }) => (
-  <Dashboard {...{actions, reloadTimestamp, ...props }} />
+const DashboardContainer = ({actions, ...props }) => (
+  <Dashboard {...{actions, ...props }} />
 );
+
 DashboardContainer.propTypes = {
   actions: PropTypes.object.isRequired,
-  reloadTimestamp: PropTypes.object.isRequired
+  reloadTimestamp: PropTypes.number
 };
 
 function mapStateToProps(state) {
