@@ -64,6 +64,8 @@ class WidgetsController < ApplicationController
 
   # Get /widgets/1/data.json
   def data
+    # It must be removed and set the query only by parameters.
+    @widget.update(range: params[:range]) if params[:range].present?
     render json: {
       data: @widget.data,
       attributes: WidgetSerializer.new(@widget).as_json

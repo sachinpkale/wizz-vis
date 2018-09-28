@@ -1,3 +1,4 @@
 /* jshint esversion: 6 */
 
 export const DASHBOARD_RELOAD_UPDATE = 'DASHBOARD_RELOAD_UPDATE';
+export const DASHBOARD_SET_RANGE = 'DASHBOARD_SET_RANGE';

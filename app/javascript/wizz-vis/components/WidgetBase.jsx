@@ -71,12 +71,20 @@ export default class WidgetBase extends React.Component {
       };
     }
 
+    // It must be set on a better way.
+    if (nextProps.range !== prevState.range) {
+      return {
+        range: nextProps.range
+      };
+    }
+
     // No state update necessary
     return null;
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.reloadTimestamp !== prevProps.reloadTimestamp) {
+    if (this.state.reloadTimestamp !== prevProps.reloadTimestamp ||
+        this.state.range !== prevProps.range) {
       this.fetchData();
     }
   }
@@ -85,7 +93,7 @@ export default class WidgetBase extends React.Component {
     let button = $('.preloader-wrapper[widget_id="' + this.props.id + '"]');
     button.addClass('active');
     return (
-      fetch('/widgets/' + this.props.id + '/data.json')
+      fetch('/widgets/' + this.props.id + '/data.json?range=' + (this.state.range || ''))
         .then(response => Errors.handleErrors(response))
         .then(widget => {
           if(widget.data && JSON.stringify(widget.data) !== JSON.stringify(this.state.$$data) ||

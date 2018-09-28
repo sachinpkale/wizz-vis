@@ -6,7 +6,7 @@ import ReactOnRails from 'react-on-rails';
 import { AppContainer } from "react-hot-loader";
 import { render } from "react-dom";
 
-import ReloadContainer from '../containers/ReloadContainer';
+import ControlsContainer from '../containers/ControlsContainer';
 
 /*
 *  Export a function that returns a ReactComponent, depending on a store named SharedReduxStore.
@@ -33,11 +33,11 @@ export default (props, railsContext, domNodeId) => {
    render(element, document.getElementById(domNodeId));
  }
 
- renderApp(ReloadContainer);
+ renderApp(ControlsContainer);
 
  if (module.hot) {
-   module.hot.accept(['../containers/ReloadContainer'], () => {
-     renderApp(ReloadContainer);
+   module.hot.accept(['../containers/ControlsContainer'], () => {
+     renderApp(ControlsContainer);
    })
  }
 };

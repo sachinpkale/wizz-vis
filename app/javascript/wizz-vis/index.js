@@ -3,7 +3,7 @@
 import ReactOnRails from 'react-on-rails';
 
 import DashboardApp from './startup/DashboardApp';
-import ReloadApp from './startup/ReloadApp';
+import ControlsApp from './startup/ControlsApp';
 import WidgetBase from './components/WidgetBase';
 import Info from './components/Info';
 import Clock from './components/Clock';
@@ -14,7 +14,7 @@ ReactOnRails.register({
   DashboardApp,
   WidgetBase,
   Clock,
-  ReloadApp,
+  ControlsApp,
   Info
 });
 

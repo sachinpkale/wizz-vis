@@ -82,7 +82,10 @@ class DashboardsController < ApplicationController
     def initialize_shared_store
       redux_store(
         'SharedReduxStore',
-        props: { reloadTimestamp: nil }
+        props: {
+          reloadTimestamp: nil,
+          setRange: nil
+        }
       )
     end
 
