@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_121249) do
+ActiveRecord::Schema.define(version: 2018_09_24_112351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,20 @@ ActiveRecord::Schema.define(version: 2018_08_16_121249) do
     t.index ["filterable_id", "filterable_type"], name: "index_filters_on_filterable_id_and_filterable_type"
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.uuid "consumer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations_users", id: false, force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["organization_id", "user_id"], name: "index_organizations_users_on_organization_id_and_user_id"
+    t.index ["user_id", "organization_id"], name: "index_organizations_users_on_user_id_and_organization_id"
+  end
+
   create_table "post_aggregators", force: :cascade do |t|
     t.string "output_name"
     t.string "operator"
@@ -94,6 +108,8 @@ ActiveRecord::Schema.define(version: 2018_08_16_121249) do
     t.string "doorkeeper_access_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

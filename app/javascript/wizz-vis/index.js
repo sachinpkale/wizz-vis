@@ -1,5 +1,10 @@
 /* jshint esversion: 6 */
 
+// Imports for IE11
+import 'es6-promise';
+import 'isomorphic-fetch';
+import '@babel/polyfill';
+
 import ReactOnRails from 'react-on-rails';
 
 import DashboardApp from './startup/DashboardApp';
