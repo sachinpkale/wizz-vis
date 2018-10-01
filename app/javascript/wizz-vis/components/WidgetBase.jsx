@@ -206,8 +206,8 @@ WidgetBase.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    range: state.setRange
-    // Add clock - reloadTimestamp and remove from Dashboard.
+    range: state.setRange,
+    reloadTimestamp: state.reloadTimestamp
   };
 }
 

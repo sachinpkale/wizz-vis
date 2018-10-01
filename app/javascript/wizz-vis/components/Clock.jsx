@@ -5,6 +5,7 @@ export default class Clock extends React.Component {
   constructor(props){
     super(props);
     this.state = { currentCount: this.props.interval }
+    this.updateReload = this.updateReload.bind(this);
   }
 
   timer() {
@@ -12,8 +13,8 @@ export default class Clock extends React.Component {
       currentCount: this.state.currentCount - 1
     })
     if(this.state.currentCount < 0) {
-      this.props.clockReload()
-      this.setState({ currentCount: this.props.interval })
+      this.updateReload();
+      this.setState({ currentCount: this.props.interval });
     }
   }
 
@@ -25,12 +26,15 @@ export default class Clock extends React.Component {
     clearInterval(this.intervalId);
   }
 
+  updateReload() {
+    this.props.actions.updateReload(Date.now());
+  }
+
   render() {
     return(null);
   }
 };
 
 Clock.propTypes = {
-  clockReload: PropTypes.func.isRequired,
   interval: PropTypes.number.isRequired
 };
