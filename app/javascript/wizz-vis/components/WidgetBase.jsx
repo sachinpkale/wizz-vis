@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import { ResponsiveContainer } from 'recharts';
 import get from 'lodash/get';
 import cs from 'classnames';
@@ -48,7 +49,7 @@ const components = {
   WidgetText
 };
 
-export default class WidgetBase extends React.Component {
+class WidgetBase extends React.Component {
   constructor(props) {
     super(props);
 
@@ -199,5 +200,15 @@ WidgetBase.propTypes = {
   locked: PropTypes.bool.isRequired,
   reloadTimestamp: PropTypes.number,
   remove: PropTypes.func,
-  type: PropTypes.oneOf(Object.keys(components))
+  type: PropTypes.oneOf(Object.keys(components)),
+  range: PropTypes.string
 };
+
+function mapStateToProps(state) {
+  return {
+    range: state.setRange
+    // Add clock - reloadTimestamp and remove from Dashboard.
+  };
+}
+
+export default connect(mapStateToProps)(WidgetBase);

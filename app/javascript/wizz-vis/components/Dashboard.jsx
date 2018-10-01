@@ -24,8 +24,7 @@ export default class Dashboard extends React.Component {
       layout: null,
       fetchWidgetsError: null,
       updateLayoutError: null,
-      reloadTimestamp: null,
-      widgetsRange: null
+      reloadTimestamp: null
     };
   }
 
@@ -83,13 +82,6 @@ export default class Dashboard extends React.Component {
       };
     }
 
-    // It must be set on a better way. Maybe to WidgetBase directly.
-    if (nextProps.widgetsRange !== prevState.widgetsRange) {
-      return {
-        widgetsRange: nextProps.widgetsRange
-      };
-    }
-
     // No state update necessary
     return null;
   }
@@ -111,7 +103,6 @@ export default class Dashboard extends React.Component {
                                 locked={this.props.locked}
                                 theme={this.props.theme}
                                 reloadTimestamp={this.state.reloadTimestamp}
-                                range={this.state.widgetsRange}
                                 remove={ this.removeItem.bind(this, w.id) } />
                               </div>);
                     });

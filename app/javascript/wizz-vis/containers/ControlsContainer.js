@@ -15,12 +15,15 @@ const ControlsContainer = ({ actions }) => (
 
 ControlsContainer.propTypes = {
   actions: PropTypes.object.isRequired,
-  reloadTimestamp: PropTypes.number
+  reloadTimestamp: PropTypes.number,
+  widgetsRange: PropTypes.string
 };
 
 function mapStateToProps(state) {
   return {
-    reloadTimestamp: state.reloadTimestamp
+    reloadTimestamp: state.reloadTimestamp,
+    widgetsRange: state.setRange
+    // Component's prop_name: reducer_name set in index file.
   };
 }
 
