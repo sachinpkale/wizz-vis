@@ -18,13 +18,13 @@ export default class Controls extends React.Component {
 
   render() {
     return(
-      <ul>
-        <li>
+      <div>
+        <div className='nav-entry col'>
           <a href="#" onClick={ this.updateReload }>
             <i className="material-icons">autorenew</i>
           </a>
-        </li>
-        <li>
+        </div>
+        <div className='nav-entry col s1'>
           <select
             className='browser-default'
             value={ this.props.widgetsRange }
@@ -38,8 +38,8 @@ export default class Controls extends React.Component {
             <option value='last_7_days'>Last 7 days</option>
             <option value='last_30_days'>Last 30 days</option>
           </select>
-        </li>
-      </ul>
+        </div>
+      </div>
     );
   }
 }

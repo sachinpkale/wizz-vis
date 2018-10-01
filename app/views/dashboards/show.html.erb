@@ -1,16 +1,17 @@
 <% breadcrumb :dashboard, @dashboard %>
 <%= content_for :nav_entries do %>
-  <ul class="right hide-on-med-and-down">
-    <li>
+  <div class='nav-entries col s2'>
+    <div class='right'>
       <%= link_to edit_dashboard_path(@dashboard), class: 'nav-entry' do %>
         <%= mi.edit %>
         <div class="margin-ls button-text">EDIT</div>
       <% end %>
-    </li>
-    <li>
-      <%= react_component("ControlsApp", props: nil, prerender: false) %>
-    </li>
-  </ul>
+    </div>
+  </div>
+  <%= react_component("ControlsApp", props: nil, prerender: false) %>
+<% end %>
+<%= content_for :row_class do %>
+  col s8
 <% end %>
 
 <%= react_component("DashboardApp", props: @dashboard.to_json, prerender: false) %>
