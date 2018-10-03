@@ -14,15 +14,15 @@ import ControlsContainer from '../containers/ControlsContainer';
 *  React will see that the state is the same and not do anything.
 */
 export default (props, railsContext, domNodeId) => {
- // This is where we get the existing store.
- const store = ReactOnRails.getStore('SharedReduxStore');
+  // This is where we get the existing store.
+  const store = ReactOnRails.getStore('SharedReduxStore');
 
- // renderApp is a function required for hot reloading. see
- // https://github.com/retroalgic/react-on-rails-hot-minimal/blob/master/client/src/entry.js
+  // renderApp is a function required for hot reloading. see
+  // https://github.com/retroalgic/react-on-rails-hot-minimal/blob/master/client/src/entry.js
 
- // Provider uses this.props.children, so we're not typical React syntax.
- // This allows redux to add additional props to the HelloWorldContainer.
- const renderApp = (Komponent) => {
+  // Provider uses this.props.children, so we're not typical React syntax.
+  // This allows redux to add additional props to the ControlsContainer.
+  const renderApp = (Komponent) => {
    const element = (
      <AppContainer>
        <Provider store={store}>
@@ -31,13 +31,7 @@ export default (props, railsContext, domNodeId) => {
      </AppContainer>
    )
    render(element, document.getElementById(domNodeId));
- }
+  }
 
- renderApp(ControlsContainer);
-
- if (module.hot) {
-   module.hot.accept(['../containers/ControlsContainer'], () => {
-     renderApp(ControlsContainer);
-   })
- }
+  renderApp(ControlsContainer);
 };

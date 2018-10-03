@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ResponsiveContainer } from 'recharts';
 import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 import cs from 'classnames';
 
 import WidgetTitle from './widgets/WidgetTitle';
@@ -66,21 +67,19 @@ class WidgetBase extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.reloadTimestamp !== prevState.reloadTimestamp) {
-      return {
-        reloadTimestamp: nextProps.reloadTimestamp
-      };
-    }
+    let state_values = {};
+    if (nextProps.reloadTimestamp !== prevState.reloadTimestamp)
+      state_values.reloadTimestamp = nextProps.reloadTimestamp;
 
-    // It must be set on a better way.
-    if (nextProps.range !== prevState.range) {
-      return {
-        range: nextProps.range
-      };
-    }
+    if (nextProps.range !== prevState.range)
+      state_values.range = nextProps.range;
 
     // No state update necessary
-    return null;
+    if(isEmpty(state_values))
+      return null;
+
+    // Updates reloadTimestamp/range states if necessary.
+    return state_values;
   }
 
   componentDidUpdate(prevProps, prevState) {
