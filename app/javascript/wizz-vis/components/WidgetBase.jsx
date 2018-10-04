@@ -27,6 +27,7 @@ import WidgetHistogram from './widgets/WidgetHistogram';
 import WidgetText from './widgets/WidgetText';
 
 import Errors from './../utils/errors';
+import Format from './../utils/format';
 
 import PropTypes from 'prop-types';
 
@@ -93,7 +94,11 @@ class WidgetBase extends React.Component {
     let button = $('.preloader-wrapper[widget_id="' + this.props.id + '"]');
     button.addClass('active');
     return (
-      fetch('/widgets/' + this.props.id + '/data.json?range=' + (this.state.range || ''))
+      fetch(
+        Format.buildUrl(
+          '/widgets/' + this.props.id + '/data.json',
+          { range: this.state.range || '' }
+        ))
         .then(response => Errors.handleErrors(response))
         .then(widget => {
           if(widget.data && JSON.stringify(widget.data) !== JSON.stringify(this.state.$$data) ||
