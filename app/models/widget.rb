@@ -25,7 +25,7 @@ class Widget < ApplicationRecord
   validates :row, :col, :size_x, :size_y, presence: true
 
   def range
-    options&.[]('range') || super
+    super || options&.[]('range')
   end
 
   def data(override_filters = nil, override_options = {})
