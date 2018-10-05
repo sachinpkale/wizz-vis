@@ -89,8 +89,10 @@ export default class WidgetPlane extends React.Component {
 
   getImgSize() {
     const image = this.image;
-    this.img_width = image.naturalWidth;
-    this.img_height = image.naturalHeight;
+    this.client_width  = image.clientWidth;
+    this.client_height = image.clientHeight;
+    this.img_width     = image.naturalWidth;
+    this.img_height    = image.naturalHeight;
   }
 
   get gradient() {
@@ -125,19 +127,19 @@ export default class WidgetPlane extends React.Component {
       Graph.legend({
         max: parseFloat(this.getMax(data)),
         gradient: this.gradient
-      }, '.plane.legend#legend_' + this.props.id);
+      }, '.plane.legend#legend_' + this.props.id, this.props.width);
 
     return (
       <div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <WidgetImage
+          width={this.client_width}
+          height={this.client_height}
           keepRatio={this.props.options.keep_ratio}
           image={this.getImageURL()}
           onLoad={this.handleImageLoaded.bind(this)}
-          ref={(node) => node ? this.image = node.image : null}
-        />
-      <ReactHeatmap
-        data={data}
-      />
+          ref={(node) => node ? this.image = node.image : null}>
+          <ReactHeatmap data={data} />
+        </WidgetImage>
       <div className='plane legend' id={ 'legend_' + this.props.id }></div>
       </div>
     )
