@@ -65,6 +65,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'mini_racer', platforms: :ruby
 
+gem 'nokogiri', '~> 1.8.5'
+
 gem 'swagger-blocks'
 
 group :development, :test do
