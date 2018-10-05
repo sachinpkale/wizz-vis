@@ -47,11 +47,11 @@ export default {
     return (width < height) ? width / 12 : height / 12;
   },
 
-  buildUrl(url, parameters) {
+  buildUrl(url, parameters, model) {
     let new_url = url + '?';
 
     for (const key in parameters) {
-      new_url += encodeURIComponent(key) + '=' + encodeURIComponent(parameters[key]) + '&';
+      new_url += model + '[' + encodeURIComponent(key) + ']=' + encodeURIComponent(parameters[key]) + '&';
     }
     //chop off last '&' or '?'
     return new_url.substring(0, new_url.length - 1);

@@ -97,7 +97,8 @@ class WidgetBase extends React.Component {
       fetch(
         Format.buildUrl(
           '/widgets/' + this.props.id + '/data.json',
-          { range: this.state.range || '' }
+          { range: this.props.range || '' },
+          'widget'
         ))
         .then(response => Errors.handleErrors(response))
         .then(widget => {

@@ -64,8 +64,7 @@ class WidgetsController < ApplicationController
 
   # Get /widgets/1/data.json
   def data
-    # It must be removed and set the query only by parameters.
-    @widget.update(range: params[:range]) unless params[:range].nil?
+    @widget.options.merge!(widget_params) if widget_params
     render json: {
       data: @widget.data,
       attributes: WidgetSerializer.new(@widget).as_json
@@ -89,6 +88,6 @@ class WidgetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def widget_params
-    params.require(:widget).permit(:name, :title, :row, :col, :size_x, :size_y, :dashboard_id)
+    params.require(:widget).permit(:name, :title, :row, :col, :size_x, :size_y, :dashboard_id, :range)
   end
 end

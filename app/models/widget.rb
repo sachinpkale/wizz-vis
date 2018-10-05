@@ -24,6 +24,10 @@ class Widget < ApplicationRecord
   # ==========================================================
   validates :row, :col, :size_x, :size_y, presence: true
 
+  def range
+    options&.[]('range') || super
+  end
+
   def data(override_filters = nil, override_options = {})
     query = Datastore::Query.new(
       datasource: datasource.name,
