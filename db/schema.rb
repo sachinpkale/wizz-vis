@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_100635) do
     t.datetime "updated_at", null: false
     t.string "theme"
     t.integer "interval"
-    t.boolean "locked", default: false
+    t.boolean "locked"
     t.string "range"
   end
 
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_100635) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "admin", default: false
+    t.uuid "api_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
