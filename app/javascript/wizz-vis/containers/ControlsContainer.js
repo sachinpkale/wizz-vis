@@ -9,8 +9,8 @@ import Controls from '../components/Controls';
 
 import * as actions from '../actions/index';
 
-const ControlsContainer = ({ actions }) => (
-  <Controls {...{ actions }} />
+const ControlsContainer = ({ actions, ...props }) => (
+  <Controls {...{ actions, ...props }} />
 );
 
 ControlsContainer.propTypes = {

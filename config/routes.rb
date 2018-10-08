@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :dashboards do
     resources :widgets, only: :index
     put :layout, to: 'dashboards#update_layout', on: :member
+    put :range, to: 'dashboards#update_range', on: :member
   end
 
   namespace :api do

@@ -8,7 +8,7 @@
       <% end %>
     </div>
   </div>
-  <%= react_component("ControlsApp", props: nil, prerender: false) %>
+  <%= react_component("ControlsApp", props: { dashboard_id: @dashboard.id }.to_json, prerender: false) %>
 <% end %>
 <%= content_for :row_class do %>
   col s8

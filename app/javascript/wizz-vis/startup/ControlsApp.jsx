@@ -26,7 +26,7 @@ export default (props, railsContext, domNodeId) => {
    const element = (
      <AppContainer>
        <Provider store={store}>
-         <Komponent />
+         <Komponent {...props} />
        </Provider>
      </AppContainer>
    )

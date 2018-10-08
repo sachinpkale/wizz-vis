@@ -13,6 +13,15 @@ export default class Controls extends React.Component {
   }
 
   setRange(event) {
+    fetch(
+      '/dashboards/' + this.props.dashboard_id + '/range.json',
+      {
+        method: 'put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ range: event.target.value })
+      }
+    );
+
     this.props.actions.updateRange(event.target.value);
   }
 

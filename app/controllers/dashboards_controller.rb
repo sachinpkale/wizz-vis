@@ -1,9 +1,9 @@
 class DashboardsController < ApplicationController
   include ReactOnRails::Controller
 
-  before_action :set_dashboard, only: [:show, :edit, :update, :destroy, :update_layout]
+  before_action :set_dashboard, only: [:show, :edit, :update, :destroy, :update_layout, :update_range]
   before_action :initialize_shared_store, only: :show
-  skip_before_action :verify_authenticity_token, only: :update_layout
+  skip_before_action :verify_authenticity_token, only: [:update_layout, :update_range]
 
   # GET /dashboards
   # GET /dashboards.json
@@ -68,6 +68,13 @@ class DashboardsController < ApplicationController
     head :ok
   end
 
+  # PUT /dashboard/1/range.json
+  def update_range
+    return head :not_modified if @dashboard.range.eql?(params[:range])
+    @dashboard.update(dashboard_params)
+    head :ok
+  end
+
   # DELETE /dashboards/1
   # DELETE /dashboards/1.json
   def destroy
@@ -84,7 +91,7 @@ class DashboardsController < ApplicationController
         'SharedReduxStore',
         props: {
           reloadTimestamp: nil,
-          setRange: nil
+          setRange: @dashboard.range
         }
       )
     end
@@ -96,6 +103,6 @@ class DashboardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dashboard_params
-      params.require(:dashboard).permit(:name, :theme, :interval, :locked)
+      params.require(:dashboard).permit(:name, :theme, :interval, :locked, :range)
     end
 end
