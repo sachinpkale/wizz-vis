@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_112351) do
+ActiveRecord::Schema.define(version: 2018_10_08_100635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_09_24_112351) do
     t.bigint "datasource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "lowerLimit", default: 0
     t.index ["datasource_id"], name: "index_aggregators_on_datasource_id"
   end
 
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_112351) do
     t.string "theme"
     t.integer "interval"
     t.boolean "locked", default: false
+    t.string "range"
   end
 
   create_table "datasources", force: :cascade do |t|
