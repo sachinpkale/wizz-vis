@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
 
   before_action :set_dashboard, only: [:show, :edit, :update, :destroy, :update_layout, :update_range]
   before_action :initialize_shared_store, only: :show
-  skip_before_action :verify_authenticity_token, only: [:update_layout, :update_range]
+  skip_before_action :verify_authenticity_token, only: :update_layout
 
   # GET /dashboards
   # GET /dashboards.json

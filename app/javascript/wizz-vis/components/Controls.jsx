@@ -4,6 +4,9 @@ import React from 'react';
 export default class Controls extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      error: null
+    };
     this.updateReload = this.updateReload.bind(this);
     this.setRange = this.setRange.bind(this);
   }
@@ -17,10 +20,15 @@ export default class Controls extends React.Component {
       '/dashboards/' + this.props.dashboard_id + '/range.json',
       {
         method: 'put',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': ReactOnRails.authenticityToken()
+        },
+        credentials: 'same-origin',
         body: JSON.stringify({ range: event.target.value })
       }
-    );
+    )
+    .catch(error => this.setState({ error: error }));
 
     this.props.actions.updateRange(event.target.value);
   }

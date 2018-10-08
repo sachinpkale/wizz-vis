@@ -3,7 +3,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactOnRails from 'react-on-rails';
-import { AppContainer } from "react-hot-loader";
 import { render } from "react-dom";
 
 import DashboardContainer from '../containers/DashboardContainer';
@@ -24,11 +23,9 @@ export default (props, railsContext, domNodeId) => {
   // This allows redux to add additional props to the DashboardContainer.
   const renderApp = (Komponent) => {
    const element = (
-     <AppContainer>
-       <Provider store={store}>
-         <Komponent  {...props} />
-       </Provider>
-     </AppContainer>
+     <Provider store={store}>
+       <Komponent  {...props} />
+     </Provider>
    )
    render(element, document.getElementById(domNodeId));
   }
