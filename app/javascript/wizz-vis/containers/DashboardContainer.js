@@ -29,5 +29,4 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) };
 }
 
-// Don't forget to actually use connect!
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
