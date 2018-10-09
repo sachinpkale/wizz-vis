@@ -1,13 +1,13 @@
 /* jshint esversion: 6 */
 
-import commonReducer from './common';
+import { init } from './functions';
 import * as actionTypes from '../constants';
 
 const initialState = null;
 
 // Name function the same as the reducer for debugging.
 export default function rangeReducer(state = initialState, action) {
-  return commonReducer.init(
+  return init(
     state, action, actionTypes.DASHBOARD_SET_RANGE
   );
 }
